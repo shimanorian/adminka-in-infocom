@@ -50,7 +50,7 @@ services:
     build: ./app
     container_name: notes-app
     environment:
-      PRIMARY_DSN: postgresql://app:app@pg-primary:5432/appdb   # запись
+      PRIMARY_DSN: postgresql://app:app@pg-replica:5432/appdb   # запись
       REPLICA_DSN: postgresql://app:app@pg-replica:5432/appdb   # чтение
     depends_on:
       - pg-primary
