@@ -46,6 +46,18 @@ services:
     ports:
       - "5433:5432"
 
+  app:
+    build: ./app
+    container_name: notes-app
+    environment:
+      PRIMARY_DSN: postgresql://app:app@pg-primary:5432/appdb   # запись
+      REPLICA_DSN: postgresql://app:app@pg-replica:5432/appdb   # чтение
+    depends_on:
+      - pg-primary
+      - pg-replica
+    ports:
+      - "8080:8080"
+
 volumes:
   primary-data:
   replica-data:
