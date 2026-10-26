@@ -50,13 +50,51 @@ services:
     build: ./app
     container_name: notes-app
     environment:
-      PRIMARY_DSN: postgresql://app:app@pg-replica:5432/appdb   # запись
+      PRIMARY_DSN: postgresql://app:app@pg-primary:5432/appdb   # запись
       REPLICA_DSN: postgresql://app:app@pg-replica:5432/appdb   # чтение
     depends_on:
       - pg-primary
       - pg-replica
     ports:
       - "8080:8080"
+
+  # --- мониторинг ---
+  exporter-primary:
+    image: quay.io/prometheuscommunity/postgres-exporter:v0.15.0
+    container_name: exporter-primary
+    environment:
+      DATA_SOURCE_NAME: postgresql://app:app@pg-primary:5432/appdb?sslmode=disable
+      PG_EXPORTER_EXTEND_QUERY_PATH: /queries.yml
+    volumes:
+      - ./monitoring/queries.yml:/queries.yml:ro
+    depends_on:
+      - pg-primary
+
+  exporter-replica:
+    image: quay.io/prometheuscommunity/postgres-exporter:v0.15.0
+    container_name: exporter-replica
+    environment:
+      DATA_SOURCE_NAME: postgresql://app:app@pg-replica:5432/appdb?sslmode=disable
+    depends_on:
+      - pg-replica
+
+  prometheus:
+    image: prom/prometheus:v2.53.0
+    container_name: prometheus
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    ports:
+      - "9090:9090"
+
+  grafana:
+    image: grafana/grafana:11.1.0
+    container_name: grafana
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: admin
+    volumes:
+      - ./monitoring/grafana/datasource.yml:/etc/grafana/provisioning/datasources/datasource.yml:ro
+    ports:
+      - "3000:3000"
 
 volumes:
   primary-data:

@@ -1,0 +1,10 @@
+# своя метрика: отставание каждой реплики в байтах (считается на primary)
+pg_replication_custom:
+  query: "SELECT application_name, pg_wal_lsn_diff(pg_current_wal_lsn(), replay_lsn) AS lag_bytes FROM pg_stat_replication"
+  metrics:
+    - application_name:
+        usage: "LABEL"
+        description: "Имя реплики"
+    - lag_bytes:
+        usage: "GAUGE"
+        description: "Сколько байт WAL реплика ещё не применила"
