@@ -1,0 +1,81 @@
+POST app-logs/_bulk
+{"index": {}}
+{"timestamp": "2026-10-27T08:06:41Z", "level": "INFO", "service": "order-service", "message": "Order status changed to SHIPPED", "trace_id": "trace-0001"}
+{"index": {}}
+{"timestamp": "2026-10-27T08:18:23Z", "level": "INFO", "service": "api-gateway", "message": "Request completed with status 200", "trace_id": "trace-0010"}
+{"index": {}}
+{"timestamp": "2026-10-27T08:37:02Z", "level": "INFO", "service": "api-gateway", "message": "Request completed with status 200", "trace_id": "trace-0002"}
+{"index": {}}
+{"timestamp": "2026-10-27T08:52:15Z", "level": "ERROR", "service": "payment-service", "message": "Payment declined by bank: insufficient funds", "trace_id": "trace-0002"}
+{"index": {}}
+{"timestamp": "2026-10-27T09:17:07Z", "level": "INFO", "service": "payment-service", "message": "Payment authorized", "trace_id": "trace-0004"}
+{"index": {}}
+{"timestamp": "2026-10-27T09:34:25Z", "level": "INFO", "service": "api-gateway", "message": "Request completed with status 200", "trace_id": "trace-0001"}
+{"index": {}}
+{"timestamp": "2026-10-27T09:50:54Z", "level": "INFO", "service": "auth-service", "message": "User login successful", "trace_id": "trace-0003"}
+{"index": {}}
+{"timestamp": "2026-10-27T10:01:34Z", "level": "ERROR", "service": "order-service", "message": "Database connection timeout while saving order", "trace_id": "trace-0002"}
+{"index": {}}
+{"timestamp": "2026-10-27T10:26:11Z", "level": "ERROR", "service": "order-service", "message": "Failed to reserve items: product out of stock", "trace_id": "trace-0002"}
+{"index": {}}
+{"timestamp": "2026-10-27T10:34:35Z", "level": "ERROR", "service": "auth-service", "message": "Token validation failed: signature expired", "trace_id": "trace-0012"}
+{"index": {}}
+{"timestamp": "2026-10-27T10:50:39Z", "level": "INFO", "service": "api-gateway", "message": "Request completed with status 200", "trace_id": "trace-0004"}
+{"index": {}}
+{"timestamp": "2026-10-27T11:13:49Z", "level": "ERROR", "service": "payment-service", "message": "Connection refused to payment provider", "trace_id": "trace-0006"}
+{"index": {}}
+{"timestamp": "2026-10-27T11:31:23Z", "level": "ERROR", "service": "payment-service", "message": "Connection refused to payment provider", "trace_id": "trace-0005"}
+{"index": {}}
+{"timestamp": "2026-10-27T11:44:05Z", "level": "WARN", "service": "auth-service", "message": "Invalid password attempt for user", "trace_id": "trace-0010"}
+{"index": {}}
+{"timestamp": "2026-10-27T12:05:56Z", "level": "ERROR", "service": "order-service", "message": "Failed to reserve items: product out of stock", "trace_id": "trace-0006"}
+{"index": {}}
+{"timestamp": "2026-10-27T12:24:04Z", "level": "WARN", "service": "payment-service", "message": "Payment provider responded slowly: 3200 ms", "trace_id": "trace-0002"}
+{"index": {}}
+{"timestamp": "2026-10-27T12:37:09Z", "level": "INFO", "service": "payment-service", "message": "Refund processed", "trace_id": "trace-0008"}
+{"index": {}}
+{"timestamp": "2026-10-27T12:59:04Z", "level": "INFO", "service": "payment-service", "message": "Payment authorized", "trace_id": "trace-0009"}
+{"index": {}}
+{"timestamp": "2026-10-27T13:11:38Z", "level": "WARN", "service": "order-service", "message": "Inventory low for product SKU-1042", "trace_id": "trace-0008"}
+{"index": {}}
+{"timestamp": "2026-10-27T13:24:17Z", "level": "INFO", "service": "payment-service", "message": "Payment authorized", "trace_id": "trace-0008"}
+{"index": {}}
+{"timestamp": "2026-10-27T13:44:41Z", "level": "INFO", "service": "api-gateway", "message": "Incoming request GET /api/orders", "trace_id": "trace-0010"}
+{"index": {}}
+{"timestamp": "2026-10-27T14:03:56Z", "level": "WARN", "service": "payment-service", "message": "Payment provider responded slowly: 3200 ms", "trace_id": "trace-0011"}
+{"index": {}}
+{"timestamp": "2026-10-27T14:21:22Z", "level": "INFO", "service": "order-service", "message": "Order created successfully", "trace_id": "trace-0003"}
+{"index": {}}
+{"timestamp": "2026-10-27T14:31:13Z", "level": "ERROR", "service": "api-gateway", "message": "Upstream payment-service timeout after 5000 ms", "trace_id": "trace-0005"}
+{"index": {}}
+{"timestamp": "2026-10-27T14:54:25Z", "level": "WARN", "service": "auth-service", "message": "Invalid password attempt for user", "trace_id": "trace-0008"}
+{"index": {}}
+{"timestamp": "2026-10-27T15:12:25Z", "level": "INFO", "service": "api-gateway", "message": "Incoming request POST /api/payments", "trace_id": "trace-0009"}
+{"index": {}}
+{"timestamp": "2026-10-27T15:28:55Z", "level": "INFO", "service": "order-service", "message": "Order status changed to SHIPPED", "trace_id": "trace-0009"}
+{"index": {}}
+{"timestamp": "2026-10-27T15:44:43Z", "level": "ERROR", "service": "order-service", "message": "Database connection timeout while saving order", "trace_id": "trace-0007"}
+{"index": {}}
+{"timestamp": "2026-10-27T15:57:11Z", "level": "WARN", "service": "auth-service", "message": "Invalid password attempt for user", "trace_id": "trace-0003"}
+{"index": {}}
+{"timestamp": "2026-10-27T16:13:31Z", "level": "WARN", "service": "auth-service", "message": "Invalid password attempt for user", "trace_id": "trace-0010"}
+{"index": {}}
+{"timestamp": "2026-10-27T16:34:00Z", "level": "ERROR", "service": "auth-service", "message": "Token validation failed: signature expired", "trace_id": "trace-0003"}
+{"index": {}}
+{"timestamp": "2026-10-27T16:52:39Z", "level": "ERROR", "service": "payment-service", "message": "Connection refused to payment provider", "trace_id": "trace-0010"}
+{"index": {}}
+{"timestamp": "2026-10-27T17:12:39Z", "level": "INFO", "service": "order-service", "message": "Order status changed to SHIPPED", "trace_id": "trace-0011"}
+{"index": {}}
+{"timestamp": "2026-10-27T17:31:51Z", "level": "ERROR", "service": "api-gateway", "message": "Upstream payment-service timeout after 5000 ms", "trace_id": "trace-0009"}
+{"index": {}}
+{"timestamp": "2026-10-27T17:44:25Z", "level": "ERROR", "service": "payment-service", "message": "Payment declined by bank: insufficient funds", "trace_id": "trace-0002"}
+{"index": {}}
+{"timestamp": "2026-10-27T17:55:12Z", "level": "ERROR", "service": "payment-service", "message": "Payment declined by bank: insufficient funds", "trace_id": "trace-0002"}
+{"index": {}}
+{"timestamp": "2026-10-27T18:14:07Z", "level": "INFO", "service": "auth-service", "message": "Access token refreshed", "trace_id": "trace-0006"}
+{"index": {}}
+{"timestamp": "2026-10-27T18:29:36Z", "level": "INFO", "service": "api-gateway", "message": "Incoming request GET /api/orders", "trace_id": "trace-0003"}
+{"index": {}}
+{"timestamp": "2026-10-27T18:55:01Z", "level": "WARN", "service": "api-gateway", "message": "Slow response from upstream order-service: 1840 ms", "trace_id": "trace-0002"}
+{"index": {}}
+{"timestamp": "2026-10-27T19:09:09Z", "level": "WARN", "service": "auth-service", "message": "Too many login attempts, rate limit applied", "trace_id": "trace-0011"}
