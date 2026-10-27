@@ -26,5 +26,35 @@ services:
       elasticsearch:
         condition: service_healthy
 
+  # --- мониторинг ---
+  es-exporter:
+    image: quay.io/prometheuscommunity/elasticsearch-exporter:v1.7.0
+    container_name: es-exporter
+    command:
+      - --es.uri=http://elasticsearch:9200
+      - --es.all          # метрики со всех узлов кластера
+      - --es.indices      # метрики по каждому индексу
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+
+  prometheus:
+    image: prom/prometheus:v2.53.0
+    container_name: prometheus
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    ports:
+      - "9090:9090"
+
+  grafana:
+    image: grafana/grafana:11.1.0
+    container_name: grafana
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: admin
+    volumes:
+      - ./monitoring/grafana/datasource.yml:/etc/grafana/provisioning/datasources/datasource.yml:ro
+    ports:
+      - "3000:3000"
+
 volumes:
   es-data:
